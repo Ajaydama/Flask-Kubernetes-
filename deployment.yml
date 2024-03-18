@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-test-service
+  name: flask-test-service-1
 spec:
   selector:
-    app: flask-test-app
+    app: flask-test-app-1
   ports:
     - protocol: "TCP"
       port: 6001
@@ -15,20 +15,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-test-app
+  name: flask-test-app-1
 spec:
   selector:
     matchLabels:
-      app: flask-test-app
+      app: flask-test-app-1
   replicas: 5
   template:
     metadata:
       labels:
-        app: flask-test-app
+        app: flask-test-app-1
     spec:
       containers:
-        - name: flask-test-app
-          image: docker.io/ajaydama007/minikube-flask-app
+        - name: flask-test-app-1
+          image: docker.io/ajaydama007/minikube-flask-app-1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
